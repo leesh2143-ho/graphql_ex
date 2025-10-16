@@ -1,0 +1,26 @@
+type Board {
+    id: ID!
+    title: String
+    content: String
+    author: String
+    createdAt: String
+    updatedAt: String
+}
+
+type BoardPage {
+    content: [Board]
+    totalPages: Int
+    totalElements: Int
+    size: Int
+    number: Int
+}
+
+enum SortDirection {
+    ASC
+    DESC
+}
+
+type Query {
+    boards(keyword: String, page: Int!, size: Int!, sort: String, dir: SortDirection = DESC): BoardPage
+    board(id: ID!): Board
+}
